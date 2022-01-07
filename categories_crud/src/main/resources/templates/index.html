@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <title>index</title>
+</head>
+<body>
+<a th:href="@{/add_cate}"><button>Add new category</button></a>
+<table border="1" cellpadding="10">
+    <thead>
+    <tr>
+        <th>Name</th>
+        <th>Created_at</th>
+        <th>Updated_at</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cate : ${cateList}">
+        <td th:text="${cate.getName()}"></td>
+        <td th:text="${cate.getCreated_at()}"></td>
+        <td th:text="${cate.getUpdated_at()}"></td>
+        <td><a th:href="@{'/delete_cate/'+${cate.getId()}}">Delete</a></td>
+        <td><a th:href="@{'/update_cate/'+${cate.getId()}}">Edit</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
